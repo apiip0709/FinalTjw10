@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Scene</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{ username }}</h1>
+    </header>
+    <div>
+        <h1>Welcome to Message Delivery and Reception Web App</h1>
+        <p>This web app allows you to send and receive messages conveniently.</p>
+        <h2>Send Messages</h2>
+        <p>Click the button below to go to the send email scene:</p>
+        <button onclick="window.location.href='/send_email'">Kirim Pesan via Email</button>
+        
+        <h2>Receive Messages</h2>
+        <p>Click the button below to go to the received emails scene:</p>
+        <button onclick="window.location.href='/received_emails'">Baca Pesan Email</button>
+        
+        <br><br>
+        <button onclick="window.location.href='/logout'">Log Out</button>
+    </div>
+</body>
+</html>

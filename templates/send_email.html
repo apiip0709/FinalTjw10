@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Email</title>
+</head>
+<body>
+    <h1>Send Email</h1>
+    <form action="/send_email" method="POST">
+        <label for="sent_to">To:</label><br>
+        <input type="text" id="sent_to" name="sent_to" autocomplete="off" required><br><br>
+
+        <label for="sent_subject">Subject:</label><br>
+        <input type="text" id="sent_subject" name="sent_subject" autocomplete="off" required><br><br>
+
+        <label for="sent_body">Body:</label><br>
+        <textarea id="sent_body" name="sent_body" rows="5" required></textarea><br><br>
+
+        <input type="submit" value="Send Email">
+    </form>
+
+    <button onclick="window.location.href='/home'">Back</button>
+</body>
+</html>

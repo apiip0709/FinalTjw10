@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Received Emails</title>
+    <style>
+        .email {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .email-details {
+            display: none;
+            margin-top: 10px;
+        }
+        .email:hover {
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+        .email:hover .email-details {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kotak Masuk</h1>
+    <div>
+        {% if emails %}
+            {% for email in emails %}
+                <div class="email">
+                    <strong>From:</strong> {{ email['From'] }}<br>
+                    <strong>To:</strong> {{ email['To'] }}<br>
+                    <strong>Subject:</strong> {{ email['Subject'] }}<br>
+                    <strong>Body:</strong> <br>
+                    <div class="email-details">
+                        {{ email['Body'] }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Tidak ada email.</p>
+        {% endif %}
+    </div>
+    <a href="/home">Kembali</a>
+</body>
+</html>
