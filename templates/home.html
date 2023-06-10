@@ -2,24 +2,136 @@
 <html>
 <head>
     <title>Home Scene</title>
+    <style>
+        body{
+            background-color: white;
+        }
+
+        header{
+            color: #000000;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 800;
+        }
+
+        img{
+            width: 575px;
+            height: 650px;
+        }
+
+        section{
+            margin: auto;
+            display: flex;
+            margin-bottom: 50px;
+        }
+
+        .kolom{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .welcome{
+            display: flex;
+            width: 100%;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin-bottom: 5px;
+
+        } 
+        .deksripsi{
+            font-family: sans-serif;
+            font-weight: 800px;
+            font-size: 20px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .login-card {
+            background-color: #61876E;
+            border: 1px solid #9DC08B;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            width: 625px;
+            padding: 100px;
+            text-align: center;
+        }
+
+        .send{
+            color: white;
+            font-family: sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .deks{
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-top: 5px;
+        }
+
+        .tombolsend {
+            width: flexpx;
+            padding: 10px;
+            background-color: #609966;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-bottom: 50px;
+        }
+
+        .tombolsend:hover {
+            background-color: #9DC08B;
+        }
+
+        .tombolreceive {
+            width: flexpx;
+            padding: 10px;
+            background-color: #609966;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .tombolreceive:hover {
+            background-color: #9DC08B;
+        }
+
+
+
+
+
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome, {{ username }}</h1>
-    </header>
+    <br><br>
     <div>
-        <h1>Welcome to Message Delivery and Reception Web App</h1>
-        <p>This web app allows you to send and receive messages conveniently.</p>
-        <h2>Send Messages</h2>
-        <p>Click the button below to go to the send email scene:</p>
-        <button onclick="window.location.href='/send_email'">Kirim Pesan via Email</button>
-        
-        <h2>Receive Messages</h2>
-        <p>Click the button below to go to the received emails scene:</p>
-        <button onclick="window.location.href='/received_emails'">Baca Pesan Email</button>
-        
-        <br><br>
-        <button onclick="window.location.href='/logout'">Log Out</button>
+        <section id="home">
+            <img src="https://img.freepik.com/free-vector/email-campaign-concept-illustration_114360-1681.jpg?w=1060&t=st=1686197944~exp=1686198544~hmac=e60f403ecf4ad560eb57abdd9e3283668491ec95deeb5cc47e6c137e846b615f"/>
+            <div class="kolom">
+                <h1 class = "welcome">Welcome to Message Delivery and Reception Web App</h1>
+                <p class ="deksripsi">This web app allows you to send and receive messages conveniently.</p> 
+
+            <div class="login-card"> 
+                <h2 class="send">Send Messages</h2>
+                <p class="deks">Click the button below to go to the send email scene:</p>
+                <button class="tombolsend" onclick="window.location.href='/send_email'">Kirim Pesan via Email</button>
+                
+                <h2 class="send">Receive Messages</h2>
+                <p class="deks">Click the button below to go to the received emails scene:</p>
+                <button class="tombolreceive" onclick="window.location.href='/received_emails'">Baca Pesan Email</button>
+                
+            </div>
+            <br>
+            <button class="tombolsend" onclick="window.location.href='/'">Back to Login</button>
+        </section>
     </div>
 </body>
 </html>

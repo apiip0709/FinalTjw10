@@ -1,17 +1,17 @@
 import smtplib
 import imaplib
 import email
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
 app.secret_key = "secret_key"
 
 @app.route('/')
-def login():
+def home():
     return render_template('login.html')
 
-@app.route('/login', methods=['GET', 'POST'])
-def login_cek():
+@app.route('/login', methods=['POST'])
+def login():
     gmail_user = request.form['gmail_user']
     gmail_pass = request.form['gmail_pass']
 
@@ -29,18 +29,11 @@ def login_cek():
         session['gmail_user'] = gmail_user
         session['gmail_pass'] = gmail_pass
 
-        return redirect(url_for('home'))
+        return render_template('home.html')
 
     except smtplib.SMTPAuthenticationError:
         # Tampilkan pesan error jika autentikasi gagal
-        return render_template('login.html', error="Login gagal! Email atau password salah.", action="/login")
-
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    if request.method == 'POST':
-        return render_template('home.html')
-    else:
-        return render_template('home.html')
+        return render_template('login.html', error="Login gagal! Email atau password salah.")
 
 @app.route('/received_emails')
 def received_emails():
@@ -148,11 +141,9 @@ def send_email():
     # Metode GET untuk mengakses halaman formulir
     return render_template('send_email.html')
 
-@app.route('/logout')
-def logout():
-    session.pop('gmail_user', None)
-    session.pop('gmail_pass', None)
-    return redirect(url_for('login'))
+@app.route('/home')
+def home_page():
+    return render_template('home.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

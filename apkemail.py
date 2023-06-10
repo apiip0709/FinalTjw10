@@ -73,4 +73,4 @@ window.mainloop()
     # gmail_pass = "jpqvzhoqujptemlv"
 
         # gmail_user = "tugas.imaplib@gmail.com"
-        # gmail_pass = "htqtgddtcxeyxvdo"  
+        # gmail_pass = "htqtgddtcxeyxvdo"

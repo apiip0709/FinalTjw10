@@ -1,23 +1,69 @@
 <!DOCTYPE html>
+<style>
+    .judul{
+        text-align: center;
+        margin-bottom: 100px;
+    }
+    body{
+        text-align: center;
+        background-image: url("https://img.freepik.com/free-vector/mail-sent-concept-illustration_114360-157.jpg?w=1060&t=st=1686236282~exp=1686236882~hmac=addde333d445997e3cbe48b18bde220d503728080e44c219168131475b45d61c");
+        background-size: 50%;
+    }
+
+    .tabel{
+        width: 750px;
+        height: 25px;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+
+    .isi{
+        width: 750px;
+        height: 250px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    .subject{
+        font-size: large;
+    }
+    .tombol {
+            width: flexpx;
+            padding: 10px;
+            background-color: #609966;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .tombol:hover {
+            background-color: #9DC08B;
+        }
+
+    
+</style>
 <html>
-<head>
-    <title>Send Email</title>
-</head>
 <body>
-    <h1>Send Email</h1>
+    <div>
+        <h1 class="judul">Send Email</h1>
+    </div>
     <form action="/send_email" method="POST">
-        <label for="sent_to">To:</label><br>
-        <input type="text" id="sent_to" name="sent_to" autocomplete="off" required><br><br>
+        <label class="subject" for="sent_to">To:</label><br>
+        <input class="tabel" type="text" id="sent_to" name="sent_to" autocomplete="off" required><br><br>
 
-        <label for="sent_subject">Subject:</label><br>
-        <input type="text" id="sent_subject" name="sent_subject" autocomplete="off" required><br><br>
+        <label class="subject" for="sent_subject">Subject:</label><br>
+        <input class="tabel" type="text" id="sent_subject" name="sent_subject" autocomplete="off" required><br><br>
 
-        <label for="sent_body">Body:</label><br>
-        <textarea id="sent_body" name="sent_body" rows="5" required></textarea><br><br>
+        <label class="subject" for="sent_body">Body:</label><br>
+        <textarea class="isi" id="sent_body" name="sent_body" rows="5" required></textarea><br><br>
 
-        <input type="submit" value="Send Email">
+        <input class="tombol" type="submit" value="Send">
     </form>
 
-    <button onclick="window.location.href='/home'">Back</button>
+    <button class="tombol" onclick="window.location.href='/home'">Back</button>
 </body>
 </html>
