@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Received Emails</title>
+    <title>Gmail Lite</title>
     <style>
         h1{
             background-image: url("https://img.freepik.com/free-vector/pattern-postal-stationery_1191-221.jpg?w=1060&t=st=1686238414~exp=1686239014~hmac=60cb21ec88b090ceff91e819314627ebd22099efb9c053b94d9c73cd24ba8154");
@@ -25,9 +25,8 @@
         }
         .tombol {
             width: flexpx;
-            padding: 10px;
-            background-color: #609966;
-            color: #ffffff;
+            padding: 5px;
+            color: #000000;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -44,7 +43,11 @@
     </style>
 </head>
 <body>
-    <h1>Kotak Masuk</h1>
+    <h1>Kotak Masuk
+        <div>
+            <a class="tombol" href="/home">Kembali</a>
+        </div>
+    </h1>
     <div>
         {% if emails %}
             {% for email in emails %}
@@ -61,6 +64,5 @@
             <p>Tidak ada email.</p>
         {% endif %}
     </div>
-    <a class="tombol" href="/home">Kembali</a>
 </body>
 </html>
