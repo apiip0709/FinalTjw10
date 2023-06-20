@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Berhasil Dikirim</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: #d3d3d3;
+        }
+
+        .modal-content {
+            background-color: #609966;
+            border-radius: 10px;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 60%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .label{
+            color: #ffffff;
+            font-size: 30px;
+        }
+
+        .label2{
+            color: #ffffff;
+            font-size: 25px;
+            margin-bottom: 40px;
+
+        }
+
+
+        button {
+            width: flexpx;
+            padding: 10px;
+            background-color: #9DC08B;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #9DC08B;
+        }
+
+    </style>
+    <script>
+        window.onload = function() {
+            document.getElementById("success-modal").style.display = "block";
+        };
+
+        function closeModal() {
+            window.location.href = "/send_email";
+        }
+    </script>
+</head>
+<body>
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <h1 class="label">Email Berhasil Dikirim!</h1>
+            <p class="label2">Email Anda telah berhasil dikirim.</p>
+            <button onclick="closeModal()">Tutup</button>
+        </div>
+    </div>
+</body>
+</html>

