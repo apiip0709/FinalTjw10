@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
     <title>Received Emails</title>
-=======
-    <title>Gmail Lite</title>
->>>>>>> 1ca7e381aa082206b13be333f4ddffbcbf516709
     <style>
         h1{
             background-image: url("https://img.freepik.com/free-vector/pattern-postal-stationery_1191-221.jpg?w=1060&t=st=1686238414~exp=1686239014~hmac=60cb21ec88b090ceff91e819314627ebd22099efb9c053b94d9c73cd24ba8154");
@@ -29,14 +25,9 @@
         }
         .tombol {
             width: flexpx;
-<<<<<<< HEAD
             padding: 10px;
             background-color: #609966;
             color: #ffffff;
-=======
-            padding: 5px;
-            color: #000000;
->>>>>>> 1ca7e381aa082206b13be333f4ddffbcbf516709
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -50,17 +41,25 @@
             background-color: #9DC08B;
         }
 
+        .back{
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+            background-color: #609966;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
-    <h1>Kotak Masuk</h1>
-<<<<<<< HEAD
+    <h1>Kotak Masuk <a class="back " href="/home">Kembali</a></h1>
     <div>
-=======
-    <a class="tombol" href="/home">Kembali</a>
-    <div>
-        <br>
->>>>>>> 1ca7e381aa082206b13be333f4ddffbcbf516709
         {% if emails %}
             {% for email in emails %}
                 <div class="email">
@@ -76,9 +75,5 @@
             <p>Tidak ada email.</p>
         {% endif %}
     </div>
-<<<<<<< HEAD
-    <a class="tombol" href="/home">Kembali</a>
-=======
->>>>>>> 1ca7e381aa082206b13be333f4ddffbcbf516709
 </body>
 </html>

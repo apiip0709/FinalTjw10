@@ -1,18 +1,10 @@
 import smtplib
 import imaplib
 import email
-<<<<<<< HEAD
 from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
 app.secret_key = "secret_key"
-=======
-import os
-from flask import Flask, render_template, request, session
-
-app = Flask(__name__)
-app.secret_key = os.urandom(24)
->>>>>>> 1ca7e381aa082206b13be333f4ddffbcbf516709
 
 @app.route('/')
 def home():

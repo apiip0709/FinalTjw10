@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
     <title>Email Berhasil Dikirim</title>
-=======
-    <title>Gmail Lite/title>
->>>>>>> 1ca7e381aa082206b13be333f4ddffbcbf516709
     <style>
         .modal {
             display: none;
@@ -16,44 +12,55 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: #d3d3d3;
+            background-color: whitesmoke;
+            /* background-image: url("https://img.freepik.com/free-photo/fireworks-lighting-up-sky-new-years-eve_53876-144990.jpg?w=1800&t=st=1686467458~exp=1686468058~hmac=62e33b6b4b81f495d80bdebb91f6adfd4b594dbaaf13caca700f4dd840570def");
+            background-size: 100%; */
         }
 
         .modal-content {
-            background-color: #609966;
+            background-color: #ffffff;
             border-radius: 10px;
             margin: 10% auto;
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 10px solid #609966;
             width: 60%;
             max-width: 500px;
             text-align: center;
         }
 
         .label{
-            color: #ffffff;
+            color: #000000;
+            font-family: sans-serif;
             font-size: 30px;
+            margin-bottom: 0%;
         }
 
         .label2{
-            color: #ffffff;
-            font-size: 25px;
+            color: #000000;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
             margin-bottom: 40px;
 
         }
 
 
+        
         button {
+            background-image: url(https://cdn-icons-png.flaticon.com/512/553/553376.png?w=1380&t=st=1686468867~exp=1686469467~hmac=1d0e789949d3592142f9f73cc0a23bfafcd9ac66185bdc4c2ccb07f7df9ab977);
+            background-size: cover;
+            background-position: center;
+            /* background-repeat: no-repeat; */
             width: flexpx;
-            padding: 10px;
-            background-color: #9DC08B;
+            padding: 20px;
+            background-color: #ffffff86;
             color: #ffffff;
             border: none;
-            border-radius: 10px;
+            border-radius: 20px;
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
             transition: background-color 0.3s;
+            
         }
 
         button:hover {
@@ -74,10 +81,11 @@
 <body>
     <div id="success-modal" class="modal">
         <div class="modal-content">
-            <h1 class="label">Email Berhasil Dikirim!</h1>
-            <p class="label2">Email Anda telah berhasil dikirim.</p>
-            <button onclick="closeModal()">Tutup</button>
+            <h1 class="label">SUCCESS!</h1>
+            <p class="label2">Your messaage has been sent successfully.</p>
+            <button onclick="window.location.href='/home'"></button>
         </div>
     </div>
 </body>
 </html>
+

