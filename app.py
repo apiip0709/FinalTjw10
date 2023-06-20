@@ -1,10 +1,11 @@
+import os
 import smtplib
 import imaplib
 import email
 from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
-app.secret_key = "secret_key"
+app.secret_key = os.urandom(24)
 
 @app.route('/')
 def home():
@@ -33,7 +34,8 @@ def login():
 
     except smtplib.SMTPAuthenticationError:
         # Tampilkan pesan error jika autentikasi gagal
-        return render_template('login.html', error="Login gagal! Email atau password salah.")
+        error_message = "Login gagal! Email atau password salah."
+        return render_template('login.html', error=error_message)
 
 @app.route('/received_emails')
 def received_emails():
