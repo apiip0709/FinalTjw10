@@ -10,10 +10,6 @@
             background-position: center;
         }
 
-        h1{
-            color: #609966;
-        }
-
         .login-container {
             display: flex;
             justify-content: center;
@@ -31,6 +27,7 @@
         }
 
         .login-card h1 {
+            color: #609966;
             font-size: 30px;
             margin-bottom: 15px;
             text-align: left;
@@ -75,11 +72,11 @@
             <h1>Login</h1>
             <form action="/login" method="POST">
                 <br>
-                <input type="text" id="gmail_user" name="gmail_user"placeholder="Email" required>
+                <input type="text" id="gmail_user" name="gmail_user" placeholder="Email (gmail)" required>
 
                 <br><br>
 
-                <input type="password" id="passwordInput" name="gmail_pass" required placeholder="Password">
+                <input type="password" id="passwordInput" name="gmail_pass" placeholder="Password" required>
                 
                 <input type="checkbox" id="showPassword"> Show Password
 

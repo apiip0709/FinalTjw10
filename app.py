@@ -11,6 +11,10 @@ app.secret_key = os.urandom(24)
 def home():
     return render_template('login.html')
 
+@app.route('/home')
+def home_page():
+    return render_template('home.html')
+
 @app.route('/login', methods=['POST'])
 def login():
     gmail_user = request.form['gmail_user']
@@ -42,9 +46,6 @@ def received_emails():
     try:
         gmail_user = session.get('gmail_user')
         gmail_pass = session.get('gmail_pass')
-
-        if not gmail_user or not gmail_pass:
-            return render_template('error.html', error_message="Please login to access emails.")
 
         # Mengakses email menggunakan IMAP
         mail = imaplib.IMAP4_SSL('imap.gmail.com')
@@ -135,10 +136,6 @@ def send_email():
 
     # Metode GET untuk mengakses halaman formulir
     return render_template('send_email.html')
-
-@app.route('/home')
-def home_page():
-    return render_template('home.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
