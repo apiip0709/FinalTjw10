@@ -66,12 +66,9 @@ def received_emails():
                 # Parsing email
                 email_message = email.message_from_bytes(raw_email)
 
-                # Mendapatkan informasi pengirim
-                from_address = email.utils.parseaddr(email_message['From'])[1]
-
                 # Menampilkan informasi email
                 email_info = {
-                    'From': from_address,
+                    'From': email_message['From'],
                     'To': email_message['To'],
                     'Subject': email_message['Subject'],
                     'Body': ''
@@ -107,10 +104,6 @@ def send_email():
         # Mengambil informasi pengguna dari session
         gmail_user = session.get('gmail_user')
         gmail_pass = session.get('gmail_pass')
-
-        if not gmail_user or not gmail_pass:
-            # Jika pengguna belum login, tampilkan pesan kesalahan
-            return render_template('error.html', error_message="Please login to send emails.")
 
         # Mengambil informasi dari formulir yang dikirimkan pengguna
         sent_from = gmail_user

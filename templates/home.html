@@ -24,27 +24,21 @@
             margin-bottom: 50px;
         }
 
-        .kolom{
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
         .welcome{
             display: flex;
-            width: 100%;
             font-size: 30px;
             font-weight: bold;
             font-family: sans-serif;
             margin-bottom: 5px;
 
         } 
+
         .deksripsi{
             font-family: sans-serif;
             font-weight: 800px;
             font-size: 20px;
             margin-top: 0px;
             margin-bottom: 10px;
-            width: 100%;
         }
 
         .login-card {
@@ -57,7 +51,7 @@
             text-align: center;
         }
 
-        .send{
+        .header2{
             color: white;
             font-family: sans-serif;
             margin-bottom: 5px;
@@ -109,6 +103,7 @@
             display: flex;
             justify-content: flex-end;
         }
+
         .logout{
             background-image: url(https://img.freepik.com/free-vector/illustration-power-button_53876-5834.jpg?size=626&ext=jpg&ga=GA1.2.1891624471.1686196307&semt=ais);
             background-size: cover;
@@ -190,13 +185,13 @@
     </div>
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
-      <h2>Logout Confirmation</h2>
-      <p class="message">Are you sure you want to logout?</p>
-      <div class="buttons">
-        <button class="tombolmera" onclick="window.location.href='/'">Logout</button>
-        <button class="tombolsend" onclick="hidePopup()">Cancel</button>
-      </div>
-      <span class="close" onclick="hidePopup()">&times;</span>
+        <h2>Logout Confirmation</h2>
+        <p class="message">Are you sure you want to logout?</p>
+        <div class="buttons">
+            <button class="tombolmera" onclick="window.location.href='/'">Logout</button>
+            <button class="tombolsend" onclick="hidePopup()">Cancel</button>
+        </div>
+        <span class="close" onclick="hidePopup()">&times;</span>
     </div>
 
     <script>
@@ -215,16 +210,16 @@
     <div>
         <section id="home">
             <img src="https://img.freepik.com/free-vector/email-campaign-concept-illustration_114360-1681.jpg?w=1060&t=st=1686197944~exp=1686198544~hmac=e60f403ecf4ad560eb57abdd9e3283668491ec95deeb5cc47e6c137e846b615f"/>
-            <div class="kolom">
+            <div>
                 <h1 class = "welcome">Welcome to Message Delivery and Reception Web App</h1>
                 <p class ="deksripsi">This web app allows you to send and receive messages conveniently.</p> 
 
             <div class="login-card"> 
-                <h2 class="send">Send Messages</h2>
+                <h2 class="header2">Send Messages</h2>
                 <p class="deks">Click the button below to go to the send email scene:</p>
                 <button class="tombolsend" onclick="window.location.href='/send_email'">Kirim Pesan via Email</button>
                 
-                <h2 class="send">Receive Messages</h2>
+                <h2 class="header2">Receive Messages</h2>
                 <p class="deks">Click the button below to go to the received emails scene:</p>
                 <button class="tombolreceive" onclick="window.location.href='/received_emails'">Baca Pesan Email</button>
                 
