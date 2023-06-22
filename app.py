@@ -5,7 +5,7 @@ import email
 from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = os.urandom(24) # kode acak untuk keamanan session
 
 @app.route('/')
 def home():
@@ -17,20 +17,20 @@ def home_page():
 
 @app.route('/login', methods=['POST'])
 def login():
+    # mendapatkan nilai dari input form
     gmail_user = request.form['gmail_user']
     gmail_pass = request.form['gmail_pass']
 
     try:
         # Autentikasi SMTP (untuk mengirim email)
-        smtp_obj = smtplib.SMTP('smtp.gmail.com', 587)
-        smtp_obj.starttls()
+        smtp_obj = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         smtp_obj.login(gmail_user, gmail_pass)
 
         # Autentikasi IMAP (untuk membaca email)
-        imap_obj = imaplib.IMAP4_SSL('imap.gmail.com')
+        imap_obj = imaplib.IMAP4_SSL('imap.gmail.com', 993)
         imap_obj.login(gmail_user, gmail_pass)
 
-        # Simpan informasi autentikasi ke dalam sesi
+        # Simpan dan mempertahankan informasi autentikasi ke dalam sesi
         session['gmail_user'] = gmail_user
         session['gmail_pass'] = gmail_pass
 
@@ -40,64 +40,6 @@ def login():
         # Tampilkan pesan error jika autentikasi gagal
         error_message = "Login gagal! Email atau password salah."
         return render_template('login.html', error=error_message)
-
-@app.route('/received_emails')
-def received_emails():
-    try:
-        gmail_user = session.get('gmail_user')
-        gmail_pass = session.get('gmail_pass')
-
-        # Mengakses email menggunakan IMAP
-        mail = imaplib.IMAP4_SSL('imap.gmail.com')
-        mail.login(gmail_user, gmail_pass)
-        mail.select('inbox')
-
-        # Mencari semua email dalam kotak masuk
-        result, data = mail.search(None, 'ALL')
-        email_ids = data[0].split()
-        email_ids = list(reversed(email_ids))  # Membalik urutan email_ids
-
-        email_content = []  # Memindahkan inisialisasi list di luar loop
-
-        if email_ids:
-            for email_id in email_ids:
-                result, data = mail.fetch(email_id, '(RFC822)')
-                raw_email = data[0][1]
-
-                # Parsing email
-                email_message = email.message_from_bytes(raw_email)
-
-                # Menampilkan informasi email
-                email_info = {
-                    'From': email_message['From'],
-                    'To': email_message['To'],
-                    'Subject': email_message['Subject'],
-                    'Body': ''
-                }
-
-                # Mengekstrak isi pesan
-                if email_message.is_multipart():
-                    for part in email_message.walk():
-                        content_type = part.get_content_type()
-                        if content_type == 'text/plain':
-                            body = part.get_payload(decode=True).decode()
-                            email_info['Body'] = body
-                else:
-                    body = email_message.get_payload(decode=True).decode()
-                    email_info['Body'] = body
-
-                email_content.append(email_info)
-
-            mail.close()
-            mail.logout()
-
-            return render_template('received_emails.html', emails=email_content)
-        else:
-            mail.close()
-            mail.logout()
-            return render_template('received_emails.html', emails=[])
-    except Exception as e:
-        return render_template('error.html', error_message=f"Error: {e}")
 
 @app.route('/send_email', methods=['GET', 'POST'])
 def send_email():
@@ -122,7 +64,7 @@ def send_email():
         try:
             # Mengirim email menggunakan server SMTP Gmail
             server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-            server.ehlo()
+            server.ehlo() # memulai koneksi dengan server
             server.login(gmail_user, gmail_pass)
             server.send_message(email_message)
             server.quit()
@@ -131,11 +73,73 @@ def send_email():
             return render_template('success.html')
         except Exception as exception:
             # Jika terjadi kesalahan saat mengirim email, tampilkan pesan kesalahan
-            error_message = str(exception)
-            return render_template('error.html', error_message=error_message)
+            error = str(exception)
+            return render_template('error.html', error_message=error)
 
     # Metode GET untuk mengakses halaman formulir
     return render_template('send_email.html')
+
+@app.route('/received_emails')
+def received_emails():
+    try:
+        # Pengambilan nilai dari objek session
+        gmail_user = session.get('gmail_user')
+        gmail_pass = session.get('gmail_pass')
+
+        # Mengakses email menggunakan IMAP
+        mail = imaplib.IMAP4_SSL('imap.gmail.com', 993) # Secure Sockets Layer
+        mail.login(gmail_user, gmail_pass)
+        mail.select('inbox')
+
+        # Mencari semua email dalam kotak masuk
+        result, data = mail.search(None, 'ALL')
+        email_ids = data[0].split()
+        email_ids = list(reversed(email_ids))  # Membalik urutan email_ids
+
+        email_content = []  # Memindahkan inisialisasi list di luar loop
+
+        if email_ids:
+            for email_id in email_ids:
+                # Mengambil data email dengan format RFC822
+                result, data = mail.fetch(email_id, '(RFC822)')
+                raw_email = data[0][1]
+
+                # Parsing email dari format byte menjadi objek
+                email_message = email.message_from_bytes(raw_email)
+
+                # Menampilkan informasi email
+                email_info = {
+                    'From': email_message['From'],
+                    'To': email_message['To'],
+                    'Subject': email_message['Subject'],
+                    'Body': ''
+                }
+
+                # Mengekstrak isi pesan
+                if email_message.is_multipart():
+                    for part in email_message.walk(): # akan berjalan untuk mengecek setiap bagian
+                        content_type = part.get_content_type() # mengambil tipe konten dari setiap bagian
+                        if content_type == 'text/plain':
+                            body = part.get_payload(decode=True).decode() # mendekode isi pesan ke String
+                            email_info['Body'] = body
+                else:
+                    body = email_message.get_payload(decode=True).decode()
+                    email_info['Body'] = body
+
+                email_content.append(email_info)
+
+            mail.close()
+            mail.logout()
+
+            return render_template('received_emails.html', emails=email_content)
+        else:
+            mail.close()
+            mail.logout()
+            return render_template('received_emails.html', emails=[])
+    except Exception as exception:
+        # Jika terjadi kesalahan saat menerima email, tampilkan pesan kesalahan
+        error = str(exception)
+        return render_template('error.html', error_message=error)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

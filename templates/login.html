@@ -80,27 +80,25 @@
                 
                 <input type="checkbox" id="showPassword"> Show Password
 
-                <script>
-                const passwordInput = document.getElementById("passwordInput");
-                const showPasswordCheckbox = document.getElementById("showPassword");
-
-                showPasswordCheckbox.addEventListener("change", function () {
-                    if (showPasswordCheckbox.checked) {
-                    passwordInput.type = "text";
-                    } else {
-                    passwordInput.type = "password";
-                    }
-                });
-                </script>
-
                 <br><br>
 
                 <input type="submit" value="Next">
             </form>
             {% if error %}
-            <p class="error-message">{{ error }}</p>
+                <p>{{ error }}</p>
             {% endif %}
         </div>
     </div>
+    <script>
+        const showPasswordCheckbox = document.getElementById("showPassword");
+
+        showPasswordCheckbox.addEventListener("change", function () {
+            if (showPasswordCheckbox.checked) {
+            passwordInput.type = "text";
+            } else {
+            passwordInput.type = "password";
+            }
+        });
+    </script>
 </body>
 </html>
