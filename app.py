@@ -38,8 +38,8 @@ def login():
 
     except smtplib.SMTPAuthenticationError:
         # Tampilkan pesan error jika autentikasi gagal
-        error_message = "Login gagal! Email atau password salah."
-        return render_template('login.html', error=error_message)
+        error = "Login gagal! Email atau password salah."
+        return render_template('login.html', error_message=error)
 
 @app.route('/send_email', methods=['GET', 'POST'])
 def send_email():
